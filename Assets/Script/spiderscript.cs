@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class spiderscript : MonoBehaviour
 {
-    public Transform sp;
+    public Transform spider;
+    public Transform webshoot;
+    public GameObject webprefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,13 +16,19 @@ public class spiderscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //SpiderMovement Input
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            sp.Translate(Vector2.right);
+            spider.Translate(Vector2.right);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow)) 
         {
-            sp.Translate(Vector2.left);
+            spider.Translate(Vector2.left);
+        }
+        //Webshooting Input
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        {
+            Instantiate(webprefab, webshoot,false);
         }
     }
 }
