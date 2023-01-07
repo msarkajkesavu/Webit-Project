@@ -1,3 +1,3 @@
-# Web themed Gamejam
+# WebthemedGamejam
 # This is a repo contaning "Webit" Game created by team Target Studios
 
