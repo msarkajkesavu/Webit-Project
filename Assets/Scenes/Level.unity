@@ -1913,9 +1913,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9acddf06628ffc6449bab770f44b7a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spider: {fileID: 1058459744}
   webshoot: {fileID: 815899645}
   webprefab: {fileID: 8526096082764695570, guid: faff8b75941c5414192bd127e7c58e22, type: 3}
+  webspeed: 5
+  destroytime: 5
 --- !u!61 &1058459746
 BoxCollider2D:
   m_ObjectHideFlags: 0
