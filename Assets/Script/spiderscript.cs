@@ -9,12 +9,14 @@ public class spiderscript : MonoBehaviour
     public GameObject webprefab;
     private Animator spanime;
     public int webspeed,destroytime;
-    
+    private Spiderhealthscript spiderhp;
+
     // Start is called before the first frame update
     void Start()
     {
         spanime = GetComponent<Animator>();
         spider = GetComponent<Transform>();
+        spiderhp = GetComponent<Spiderhealthscript>();
         
     }
 
@@ -23,6 +25,7 @@ public class spiderscript : MonoBehaviour
     {
         spidermovement();
         webshooting();
+        healthsystem();
         
     }
     void spidermovement()
@@ -65,4 +68,9 @@ public class spiderscript : MonoBehaviour
         }
         
     }
+    void healthsystem() 
+    {
+        //increass and decress health value here and update to the spiderhealthscript
+        //use spiderhp.health for assigning values
+     }
 }
