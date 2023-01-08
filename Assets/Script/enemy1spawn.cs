@@ -5,7 +5,7 @@ using UnityEngine;
 public class enemy1spawn : MonoBehaviour
 {
     public GameObject Enemy1Prefab;
-    public float respawnTime = 1.0f;
+    public float respawnTime = 0.2f;
     private Vector2 screenBounds;
 
     // Use this for initialization

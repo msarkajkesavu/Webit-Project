@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class Enemy1prefab : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Vector2 screenBounds;
+
+
     void Start()
     {
-        
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        
+        //Debug.Log("OnCollisionEnter2D");
+        //Check to see if the tag on the collider is equal to Enemy
+        if (other.gameObject.tag == "web")
+        {
+            Destroy(other.gameObject);
+            gameObject.tag = "eatable";
+        }
+        else if (other.gameObject.tag == "ground") 
+        {
+            Destroy(this,2);
+        }
+
     }
 }
