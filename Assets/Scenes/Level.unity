@@ -610,13 +610,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322948056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e248967915cbb0f4cb43b920c963ba52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthslider: {fileID: 549510468}
-  health: 231
+  health: 120
 --- !u!1 &428376879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,6 +1935,8 @@ MonoBehaviour:
   webprefab: {fileID: 8526096082764695570, guid: faff8b75941c5414192bd127e7c58e22, type: 3}
   webspeed: 5
   destroytime: 5
+  healthslider: {fileID: 549510468}
+  health: 120
 --- !u!61 &1058459746
 BoxCollider2D:
   m_ObjectHideFlags: 0
