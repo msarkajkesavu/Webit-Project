@@ -7,10 +7,11 @@ public class spiderscript : MonoBehaviour
 {
     private Transform spider;
     public Transform webshoot;
-    public GameObject webprefab;
+    public GameObject webprefab,Gameoverui;
     private Animator spanime;
-    public int webspeed, destroytime;
+    public int webspeed, destroytime, eaten=1;
     private int webs = 0, shooted=0;
+
     //private Spiderhealthscript spiderhp;
     public Image healthslider;
     public int health = 120;
@@ -21,7 +22,6 @@ public class spiderscript : MonoBehaviour
         spanime = GetComponent<Animator>();
         spider = GetComponent<Transform>();
         //spiderhp = GetComponent<Spiderhealthscript>();
-        
     }
 
     // Update is called once per frame
@@ -30,8 +30,6 @@ public class spiderscript : MonoBehaviour
         spidermovement();
         webshooting();
         healthsystem();
-        score();
-
     }
     void spidermovement()
     {
@@ -78,13 +76,18 @@ public class spiderscript : MonoBehaviour
     {
         if(webs > 5) 
         {
-            health = health - 5;
+            health = health - 30;
             webs = 0;
         }
         healthslider.rectTransform.sizeDelta = new Vector2(health, 10);
         if (health > 120)
         {
             health = 120;
+        }
+        else if(health == 0) 
+        {
+            Gameoverui.SetActive(true);
+            Time.timeScale = 0f;
         }
         //increass and decress health value here and update to the spiderhealthscript
         //use spiderhp.health for assigning values
@@ -93,15 +96,16 @@ public class spiderscript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy") 
         {
-            //Change sprite by animation
+            health -= 10;
         }
         else if(collision.gameObject.tag == "eatable") 
         {
             health += 10;
+            ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+            scoreManager.AddScore(1);
+            Destroy(collision.gameObject);
+            
         }
     }
-    void score() 
-    {
-        //score updater
-    }
+    
 }
