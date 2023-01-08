@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class spiderscript : MonoBehaviour
 {
@@ -8,15 +9,18 @@ public class spiderscript : MonoBehaviour
     public Transform webshoot;
     public GameObject webprefab;
     private Animator spanime;
-    public int webspeed,destroytime;
-    private Spiderhealthscript spiderhp;
+    public int webspeed, destroytime;
+    private int webs = 0, shooted=0;
+    //private Spiderhealthscript spiderhp;
+    public Image healthslider;
+    public int health = 120;
 
     // Start is called before the first frame update
     void Start()
     {
         spanime = GetComponent<Animator>();
         spider = GetComponent<Transform>();
-        spiderhp = GetComponent<Spiderhealthscript>();
+        //spiderhp = GetComponent<Spiderhealthscript>();
         
     }
 
@@ -26,7 +30,8 @@ public class spiderscript : MonoBehaviour
         spidermovement();
         webshooting();
         healthsystem();
-        
+        score();
+
     }
     void spidermovement()
     {
@@ -59,6 +64,7 @@ public class spiderscript : MonoBehaviour
             webrb.velocity = new Vector2(0, webspeed);
             GameObject.Destroy(web, destroytime);
             spanime.SetBool("isshoot", true);
+            webs = webs + 1;
 
         }
         else
@@ -70,7 +76,32 @@ public class spiderscript : MonoBehaviour
     }
     void healthsystem() 
     {
+        if(webs > 5) 
+        {
+            health = health - 5;
+            webs = 0;
+        }
+        healthslider.rectTransform.sizeDelta = new Vector2(health, 10);
+        if (health > 120)
+        {
+            health = 120;
+        }
         //increass and decress health value here and update to the spiderhealthscript
         //use spiderhp.health for assigning values
-     }
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy") 
+        {
+            //Change sprite by animation
+        }
+        else if(collision.gameObject.tag == "eatable") 
+        {
+            health += 10;
+        }
+    }
+    void score() 
+    {
+        //score updater
+    }
 }
